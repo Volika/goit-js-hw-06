@@ -18,7 +18,6 @@ const createIngredients = textArray => {
 });
 }
 
-
 const ingredientEl = createIngredients(ingredients);
-console.log(ingredientEl);
+// console.log(ingredientEl);
 listIngredient.append(...ingredientEl);
