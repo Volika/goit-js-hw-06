@@ -11,7 +11,7 @@ function onChangeColorBtnClick(event) {
 }
 
 function changeBackground(color) {
-   document.body.style.background = color;
+   document.body.style.backgroundColor = color;
 }
 
 function getRandomHexColor() {
