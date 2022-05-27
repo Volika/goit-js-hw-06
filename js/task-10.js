@@ -8,39 +8,37 @@ const boxesRef = document.querySelector('#boxes');
 const firstBoxSize = 30;
 let collectionSize;
 
-
 inputRef.addEventListener('input', onInputChange);
 createBtn.addEventListener('click', onCreateBtnClick);
-destroyBtn.addEventListener('click', onDestroyBtnClick);
+destroyBtn.addEventListener('click', destroyBoxes);
 
-function onCreateBtnClick() {
-  console.log(collectionSize);
-  console.log(typeof collectionSize);
-  const collectionArray = [];
-// {
-//       size: firstBoxSize,
-//       boxcolor: getRandomHexColor(),
-//     }
-  let counter = 0;
-while (counter < Number(collectionSize)) {
-  console.log("counter: ", counter);
-  counter += 1;
-  
-  }
-  const oneBoxSize = firstBoxSize;
-  const boxCollection = createOneElement(oneBoxSize);
-  
-  boxesRef.append(boxCollection);
-  // boxesRef.insertAdjacentHTML("afterbegin", boxCollection);
+function onCreateBtnClick(event) {
+  createBoxes(collectionSize);
 }
-function onDestroyBtnClick() {
 
+function createBoxes(amount) {
+    const collectionArray = [];
+  let counter = 0;
+while (counter < Number(amount)) {
+  counter += 1;
+  const oneBoxSize = firstBoxSize + counter*10;
+  const boxCollection = createOneElement(oneBoxSize); 
+  collectionArray.push(boxCollection);
+  }
+    boxesRef.append(...collectionArray);
+}
+function destroyBoxes() {
+  const collectionsItem = document.querySelectorAll('.new-div');
+  let counter = 0;
+  while (counter < collectionsItem.length) {
+    counter += 1;
+    const remItem = document.querySelector('.new-div');
+      remItem.remove();
+  }
 }
 
 function onInputChange(event) {
-  // console.log(event.currentTarget.value);
-  // console.log(typeof event.currentTarget.value);
-  collectionSize = (event.currentTarget.value);
+   collectionSize = (event.currentTarget.value);
 }
 
 function createOneElement(value) {
@@ -49,19 +47,8 @@ function createOneElement(value) {
   newItem.style.backgroundColor = newBgColor;
   newItem.style.width = value +'px';
   newItem.style.height = value + 'px';
-  console.log(newItem);
+  newItem.classList.add('new-div');
   return newItem;
 }
 
- const createIngredients = textArray => {
-   return textArray.map(element => {
-    
-  const newItem = document.createElement('div');
-  newItem.style.backgroundColor = getRandomHexColor();
-  newItem.style.width = value +'px';
-  newItem.style.height = value + 'px';
-  console.log(newItem);
-  return newItem;
-   }
-   );
-}
+ 
