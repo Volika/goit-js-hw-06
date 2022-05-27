@@ -27,6 +27,7 @@ while (counter < Number(amount)) {
   }
     boxesRef.append(...collectionArray);
 }
+
 function destroyBoxes() {
   const collectionsItem = document.querySelectorAll('.new-div');
   let counter = 0;
