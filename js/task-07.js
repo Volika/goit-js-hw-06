@@ -4,7 +4,7 @@ const maxFontSize = parseInt(inputRef.max);
 
 const textRef = document.querySelector('#text');
 
-inputRef.addEventListener("change", onInputChange);
+inputRef.addEventListener("input", onInputChange);
 
 function onInputChange(event) {
     const currentFontSize = inputRef.value;
